@@ -1,18 +1,14 @@
-from PySide6.QtWidgets import QApplication, QWidget
-from PySide6.QtUiTools import QUiLoader
-from PySide6.QtCore import QFile
+from PySide6.QtWidgets import QApplication
+from MainWindow import MainWindow
 from qt_material import apply_stylesheet
-
 
 app = QApplication()
 
-ui_file = QFile("UI/mainWindow.ui")
-ui_file.open(QFile.ReadOnly)
-
-loader = QUiLoader()
-window = loader.load(ui_file)
+window = MainWindow()
 
 apply_stylesheet(app, theme='dark_teal.xml')
+
+window.plotNE( [1,2,3,4,5], [3,2,5,2,1])
 
 window.show()
 
