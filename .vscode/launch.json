@@ -8,7 +8,7 @@
             "name": "Debugger Python: File corrente con argomenti",
             "type": "debugpy",
             "request": "launch",
-            "program": "UI/ui.py",
+            "program": "main.py",
             "console": "integratedTerminal"
         }
     ]
