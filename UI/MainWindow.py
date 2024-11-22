@@ -1,7 +1,7 @@
-from PySide6.QtWidgets import QApplication, QMainWindow, QPushButton, QSplitter, QPlainTextEdit
+from PySide6.QtWidgets import QMainWindow, QSplitter, QPlainTextEdit
 from PySide6.QtCore import Qt
 import pyqtgraph as pg
-import lorem
+from Model import Writer
 
 class MainWindow( QMainWindow ):
 
@@ -18,12 +18,12 @@ class MainWindow( QMainWindow ):
 
         self.logTextView = QPlainTextEdit( )
         self.logTextView.setReadOnly( True )
-        self.logTextView.setPlainText( lorem.paragraph() )
+        self.logTextView.setPlainText( Writer.pargraphs(3) )
         self.mainSplitter.addWidget( self.logTextView )
 
         self.sideTextView = QPlainTextEdit( )
         self.sideTextView.setReadOnly( True )
-        self.sideTextView.setPlainText( lorem.paragraph() )
+        self.sideTextView.setPlainText( Writer.pargraphs(5) )
         self.secondSplitter.addWidget( self.sideTextView )
 
         self.plot = pg.PlotWidget()
