@@ -2,10 +2,11 @@ from PySide6.QtWidgets import QMainWindow, QSplitter, QPlainTextEdit
 from PySide6.QtCore import Qt
 import pyqtgraph as pg
 from Model import Writer
+from UI import SourcesListViewer, ListModel
 
 class MainWindow( QMainWindow ):
 
-    def __init__(self):
+    def __init__(self, model: ListModel.ListModel ):
         super().__init__()
 
         self.mainSplitter = QSplitter( )
@@ -21,31 +22,8 @@ class MainWindow( QMainWindow ):
         self.logTextView.setPlainText( Writer.pargraphs(3) )
         self.mainSplitter.addWidget( self.logTextView )
 
-        self.sideTextView = QPlainTextEdit( )
-        self.sideTextView.setReadOnly( True )
-        self.sideTextView.setPlainText( Writer.pargraphs(5) )
-        self.secondSplitter.addWidget( self.sideTextView )
+        self.sourcesList = SourcesListViewer.SourcesListViewer( model )
+        self.secondSplitter.addWidget( self.sourcesList )
 
         self.plot = pg.PlotWidget()
         self.secondSplitter.addWidget( self.plot )
-
-
-# from PySide6.QtWidgets import QVBoxLayout
-# import pyqtgraph as pg
-
-# uiclass, baseclass = pg.Qt.loadUiType("UI/mainWindow.ui")
-
-# class MainWindow(uiclass, baseclass):
-
-#     def __init__(self):
-#         super().__init__()
-#         self.setupUi(self)
-
-#         plotNEholder: QVBoxLayout = self.plotNEholder
-#         plotNEholder.hasHeightForWidth = lambda:True
-#         plotNEholder.heightForWidth = lambda x: x * 2 / 3
-#         plotNEholder.hasWidthForHeight = lambda:True
-#         plotNEholder.widthForHeight = lambda x: x * 3 / 2
-
-#     def plotNE(self, xs, ys ):
-#         self.plotNEwidget.plot( xs, ys )

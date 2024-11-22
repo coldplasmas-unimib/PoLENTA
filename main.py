@@ -1,10 +1,13 @@
 from PySide6.QtWidgets import QApplication
 from UI.MainWindow import MainWindow
 from qt_material import apply_stylesheet
+from UI import ListModel
 
 app = QApplication()
 
-window = MainWindow()
+listModel = ListModel.ListModel()
+
+window = MainWindow( listModel )
 
 apply_stylesheet(app, theme='dark_teal.xml')
 
